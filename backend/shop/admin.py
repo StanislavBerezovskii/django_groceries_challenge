@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 from backend.backend.settings import ADMIN_PAGINATION
-from shop.models import Category, Product, ShoppingCart, Subcategory
+from backend.shop.models import Category, Product, ShoppingCart, Subcategory
 
 
 @admin.register(Category)

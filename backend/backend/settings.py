@@ -107,7 +107,6 @@ SLUG_MAX_LEN: int = 30
 SUBCATEGORY_IMAGE_PATH: str = 'subcategories/'
 
 
-
 def set_category_image_name(instance, filename) -> str:
     """Creates category image name based on slug."""
     return f'{CATEGORY_IMAGE_PATH}{instance.slug}'
