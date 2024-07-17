@@ -73,7 +73,7 @@ SHOPPING_CART_SCHEMA = {
                 fields={
                     'total_products': serializers.IntegerField(),
                     'total_price': serializers.IntegerField(),
-                    'products': ShoppingCartGetSerializer(),},
+                    'products': ShoppingCartGetSerializer(), },
             ),
             status.HTTP_401_UNAUTHORIZED: inline_serializer(
                 name='clear_shopping_cart_error_401',

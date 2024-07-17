@@ -2,14 +2,16 @@ from django.contrib.auth.models import User
 from django.core.validators import MinValueValidator
 from django.db import models
 
-from backend.settings import (NAME_MAX_LEN,
-                                      SHOPPING_CART_MIN_QUANTITY,
-                                      SLUG_MAX_LEN,
-                                      set_category_image_name,
-                                      set_product_image_name_l,
-                                      set_product_image_name_m,
-                                      set_product_image_name_s,
-                                      set_subcategory_image_name)
+from backend.settings import (
+    NAME_MAX_LEN,
+    SHOPPING_CART_MIN_QUANTITY,
+    SLUG_MAX_LEN,
+    set_category_image_name,
+    set_product_image_name_l,
+    set_product_image_name_m,
+    set_product_image_name_s,
+    set_subcategory_image_name
+)
 
 
 class Category(models.Model):
