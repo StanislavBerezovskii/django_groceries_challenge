@@ -1,20 +1,19 @@
 from drf_spectacular.utils import extend_schema, extend_schema_view
 from rest_framework import status
 from rest_framework.decorators import action
-from rest_framework.viewsets import ModelViewSet
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
-from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
+from rest_framework.viewsets import ModelViewSet
+from rest_framework_simplejwt.views import (TokenObtainPairView,
+                                            TokenRefreshView)
 
-from api.schemas import (
-    CATEGORIES_VIEW_SCHEMA, PRODUCT_VIEW_SCHEMA,
-    SHOPPING_CART_SCHEMA, SUBCATEGORIES_VIEW_SCHEMA,
-    TOKEN_JWT_OBTAIN_SCHEMA, TOKEN_JWT_REFRESH_SCHEMA
-)
-from api.serializers import (
-    CategoryGetSerializer, ProductGetSerializer,
-    ShoppingCartGetSerializer, ShoppingCartPostSerializer, SubcategoryGetSerializer
-)
+from api.schemas import (CATEGORIES_VIEW_SCHEMA, PRODUCT_VIEW_SCHEMA,
+                         SHOPPING_CART_SCHEMA, SUBCATEGORIES_VIEW_SCHEMA,
+                         TOKEN_JWT_OBTAIN_SCHEMA, TOKEN_JWT_REFRESH_SCHEMA)
+from api.serializers import (CategoryGetSerializer, ProductGetSerializer,
+                             ShoppingCartGetSerializer,
+                             ShoppingCartPostSerializer,
+                             SubcategoryGetSerializer)
 from shop.models import Category, Product, ShoppingCart, Subcategory
 
 

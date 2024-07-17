@@ -1,12 +1,12 @@
 from django.urls import include, path
-from drf_spectacular.views import SpectacularAPIView, SpectacularRedocView, SpectacularSwaggerView
+from drf_spectacular.views import (SpectacularAPIView, SpectacularRedocView,
+                                   SpectacularSwaggerView)
 from rest_framework.routers import DefaultRouter
 from rest_framework.viewsets import ModelViewSet
 
-from api.views import (
-    CategoryViewSet, CustomTokenObtainPairView, CustomTokenRefreshView,
-    ProductViewSet, ShoppingCartViewSet, SubcategoryViewSet
-)
+from api.views import (CategoryViewSet, CustomTokenObtainPairView,
+                       CustomTokenRefreshView, ProductViewSet,
+                       ShoppingCartViewSet, SubcategoryViewSet)
 
 router = DefaultRouter()
 
