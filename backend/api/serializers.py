@@ -1,6 +1,5 @@
 from rest_framework.serializers import (CharField, IntegerField,
                                         ModelSerializer, ValidationError)
-
 from shop.models import Category, Product, ShoppingCart, Subcategory
 
 
