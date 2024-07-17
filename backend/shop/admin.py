@@ -1,7 +1,7 @@
 from django.contrib import admin
 
-from backend.backend.settings import ADMIN_PAGINATION
-from backend.shop.models import Category, Product, ShoppingCart, Subcategory
+from backend.settings import ADMIN_PAGINATION
+from shop.models import Category, Product, ShoppingCart, Subcategory
 
 
 @admin.register(Category)
@@ -21,9 +21,9 @@ class CategoryAdmin(admin.ModelAdmin):
 class ProductAdmin(admin.ModelAdmin):
     """Настраивает управление продуктами в панели администратора."""
     # Отображение
-    list_display = ('id', 'name', 'slug', 'price', 'subcategory', 'image',)
+    list_display = ('id', 'name', 'slug', 'price', 'subcategory', 'image_large', 'image_medium', 'image_small',)
     # Редактирование
-    list_editable = ('name', 'slug', 'price', 'subcategory', 'image',)
+    list_editable = ('name', 'slug', 'price', 'subcategory', 'image_large', 'image_medium', 'image_small',)
     # Поиск
     search_fields = ('name', 'slug', 'price',)
     # Фильтрация

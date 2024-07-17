@@ -2,13 +2,12 @@ from datetime import timedelta
 import os
 from pathlib import Path
 
-from corsheaders.defaults import default_headers
 from dotenv import load_dotenv
 
 load_dotenv()
 
 
-"""Application settings:"""
+# APPLICATION SETTINGS:
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -25,7 +24,7 @@ else:
     DEBUG_DB = False
 
 
-"""Django settings:"""
+# DJANGO SETTINGS:
 
 DATABASE_POSTGRES = {
     'default': {
@@ -58,20 +57,27 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # Third-party apps:
-    # 'drf_spectacular',
+    'drf_spectacular',
     'rest_framework',
     # Local apps:
+    'api',
     'shop',
 ]
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': ('rest_framework.permissions.AllowAny',),
-    'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
-    ),
-    'DEFAULT_PAGINATION_CLASS':
-        'rest_framework.pagination.PageNumberPagination',
+    'DEFAULT_AUTHENTICATION_CLASSES': ('rest_framework_simplejwt.authentication.JWTAuthentication',),
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     'PAGE_SIZE': 10,
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+}
+
+SPECTACULAR_SETTINGS = {
+    "TITLE": "groceries API",
+    "VERSION": "0.0.1",
+    "SERVE_INCLUDE_SCHEMA": False,
+    "COMPONENT_SPLIT_REQUEST": True,
+    "SCHEMA_PATH_PREFIX": r'/api/',
 }
 
 ROOT_URLCONF = 'backend.urls'
@@ -79,7 +85,7 @@ ROOT_URLCONF = 'backend.urls'
 WSGI_APPLICATION = 'backend.wsgi.application'
 
 
-"""Internationalization settings:"""
+# INTERNATIONALIZATION SETTINGS:
 
 LANGUAGE_CODE = 'ru-RU'
 
@@ -90,7 +96,7 @@ USE_I18N = True
 USE_TZ = True
 
 
-"""Model settings:"""
+# MODEL SETTINGS:
 
 ADMIN_PAGINATION = 15
 
@@ -132,7 +138,7 @@ def set_subcategory_image_name(instance, filename) -> str:
     return f'{SUBCATEGORY_IMAGE_PATH}{instance.slug}'
 
 
-"""Security settings:"""
+# SECURITY SETTINGS:
 
 ALLOWED_HOSTS = [
     'localhost',
@@ -172,7 +178,7 @@ SIMPLE_JWT = {
 }
 
 
-"""Statics settings:"""
+# STATICS SETTINGS:
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = 'media/'

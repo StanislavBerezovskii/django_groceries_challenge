@@ -2,7 +2,7 @@ from django.contrib.auth.models import User
 from django.core.validators import MinValueValidator
 from django.db import models
 
-from backend.backend.settings import (NAME_MAX_LEN,
+from backend.settings import (NAME_MAX_LEN,
                                       SHOPPING_CART_MIN_QUANTITY,
                                       SLUG_MAX_LEN,
                                       set_category_image_name,
