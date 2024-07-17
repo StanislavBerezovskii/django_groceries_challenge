@@ -1,0 +1,38 @@
+version: '3.8'
+
+volumes:
+  database_vol:
+  static_vol:
+  media_vol:
+
+services:
+    project_database:
+        image: postgres:15-alpine
+        volumes:
+            - database_vol:/var/lib/postgresql/data/
+        env_file:
+            - backend/.env
+
+    project_backend:
+        build:
+            context: backend
+            dockerfile: Dockerfile
+        env_file: backend/.env
+        restart: always
+        volumes:
+            - static_vol:/app/static
+            - media_vol:/app/media
+        depends_on:
+            - project_database
+
+    project_infra:
+        build:
+            context: ./infra
+            dockerfile: Dockerfile
+        ports:
+            - "8000:8000"
+        volumes:
+            - static_vol:/var/html/static/
+            - media_vol:/var/html/media/
+        depends_on:
+            - project_backend
