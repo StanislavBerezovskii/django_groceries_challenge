@@ -140,10 +140,7 @@ def set_subcategory_image_name(instance, filename) -> str:
 
 # SECURITY SETTINGS:
 
-ALLOWED_HOSTS = [
-    'localhost',
-    '127.0.0.1',
-]
+ALLOWED_HOSTS = ['*', '80.87.108.66', 'localhost', 'web']
 
 AUTH_PASSWORD_VALIDATORS = [
     {
