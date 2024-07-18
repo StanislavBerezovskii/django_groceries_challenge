@@ -25,14 +25,13 @@ services:
         depends_on:
             - project_database
 
-    project_infra:
-        build:
-            context: ./infra
-            dockerfile: Dockerfile
+    nginx:
+        image: nginx:1.19.3-alpine
         ports:
             - "8000:8000"
         volumes:
-            - static_vol:/var/html/static/
-            - media_vol:/var/html/media/
+            - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+            - static_vol:/app/static
+            - media_vol:/app/media
         depends_on:
             - project_backend
