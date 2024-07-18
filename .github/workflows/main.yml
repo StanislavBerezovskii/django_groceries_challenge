@@ -59,6 +59,7 @@ jobs:
           script: |
             sudo docker pull ${{ secrets.DOCKER_USERNAME }}/django_groceries_challenge-project_backend:latest
             sudo docker-compose stop
+            sudo docker-compose rm -f project_backend
             sudo touch .env
             sudo chmod 777 .env
             sudo echo DB_ENGINE=${{ secrets.DB_ENGINE }} >> .env
