@@ -61,16 +61,21 @@ jobs:
             sudo docker-compose stop
             sudo docker-compose rm -f web
             sudo rm -f .env
-            sudo echo SECRET_KEY=${{ secrets.SECRET_KEY }} > .env
-            sudo echo DEBUG=${{ secrets.DEBUG }} >> .env
-            sudo echo DB_ENGINE=${{ secrets.DB_ENGINE }} >> .env
-            sudo echo POSTGRES_DB=${{ secrets.POSTGRES_DB }} >> .env
-            sudo echo POSTGRES_USER=${{ secrets.POSTGRES_USER }} >> .env
-            sudo echo POSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD }} >> .env
-            sudo echo DB_HOST=${{ secrets.DB_HOST }} >> .env
-            sudo echo DB_PORT=${{ secrets.DB_PORT }} >> .env
-            sudo echo HOST=${{ secrets.HOST }} >> .env
+            sudo bash -c 'cat << EOF > .env
+            SECRET_KEY=${{ secrets.SECRET_KEY }}
+            DEBUG=${{ secrets.DEBUG }}
+            DB_ENGINE=${{ secrets.DB_ENGINE }}
+            POSTGRES_DB=${{ secrets.POSTGRES_DB }}
+            POSTGRES_USER=${{ secrets.POSTGRES_USER }}
+            POSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD }}
+            DB_HOST=${{ secrets.DB_HOST }}
+            DB_PORT=${{ secrets.DB_PORT }}
+            HOST=${{ secrets.HOST }}
+            EOF'
+            sudo cp ./nginx.conf /etc/nginx/conf.d/default.conf
             sudo docker-compose up -d
+            sudo docker-compose ps
+            sudo docker-compose logs web
             sudo docker-compose exec -T web python manage.py migrate auth
             sudo docker-compose exec -T web python manage.py migrate --fake-initial --run-syncdb
             sudo docker-compose exec -T web python manage.py collectstatic --no-input
