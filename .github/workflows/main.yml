@@ -58,6 +58,7 @@ jobs:
           passphrase: ${{ secrets.PASSPHRASE }} # Если ваш ssh-ключ защищён фразой-паролем
           script: |
             sudo docker pull ${{ secrets.DOCKER_USERNAME }}/django_groceries_challenge-project_backend:latest
+            sudo docker pull ${{ secrets.DOCKER_USERNAME }}/django_groceries_challenge-project_infra:latest
             sudo docker-compose stop
             sudo touch .env
             sudo chmod 777 .env
