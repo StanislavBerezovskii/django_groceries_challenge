@@ -104,15 +104,15 @@ scp ./infra/nginx.conf <username>@<host>:
 ```
 BOT_TOKEN - token of the TG bot you wish to use (you can use 5542550097:AAEvLPtl01dBQN6xqX4K3OwhqMQy0ocww0U for testing)
 DB_ENGINE - django.db.backends.postgresql
-DB_HOST - db
-POSTGRES_DB - db, (postgres by default)
-DB_PORT - 5432
+DB_HOST - db by default
+POSTGRES_DB - name of yor database (postgres by default)
+DB_PORT - 5432 by default
 DOCKER_PASSWORD - DockerHub user password
 DOCKER_USERNAME - DockerHub username
 HOST - your server ip address
-PASSPHRASE - passphrase for ssh key (if created)
-POSTGRES_PASSWORD - postgres_password (postgres by default)
-POSTGRES_USER - postgres_admin (postgres by default)
+PASSPHRASE - passphrase for your ssh key (if created)
+POSTGRES_PASSWORD - postgres by default
+POSTGRES_USER - postgres by default
 SECRET_KEY - django app secret key (try to avoid brackets if possible as they clash with Actions Secrets)
 SSH_KEY - private ssh key from your LOCAL pc (one that has access to the deploy server), public one must be declared to the server
 TELEGRAM_TO - id of your telegram account (you can get it from @userinfobot, command /start)
