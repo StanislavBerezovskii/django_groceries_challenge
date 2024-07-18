@@ -1,21 +1,21 @@
 version: '3.8'
 
 services:
-    project_database:
+    db:
         image: postgres:15-alpine
         volumes:
             - /var/lib/postgresql/data/
         env_file:
             - ./.env
 
-    project_backend:
+    web:
         image: stanislavberezovskii/django_groceries_challenge-project_backend:latest
         restart: always
         volumes:
             - static_vol:/app/static
             - media_vol:/app/media
         depends_on:
-            - project_database
+            - db
         env_file:
             - ./.env
 
@@ -28,7 +28,7 @@ services:
             - static_vol:/var/html/static/
             - media_vol:/var/html/media/
         depends_on:
-            - project_backend
+            - web
 
 volumes:
     static_vol:
